@@ -184,6 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         colors: [Color(0xFF0f9d58), Color(0xFFa6ce39)],
                       ).createShader(bounds),
                       child:Image.asset(
+                        height: 60,
                         'assets/Logo.png', // Replace with your actual image
                         fit: BoxFit.contain,
                       ),
@@ -192,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Text(
                       'WORKLYTICS:\nOFFICE ORCHESTRA',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 40,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF6B8E23),
                       ),
@@ -277,7 +278,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Expanded(
                 flex: 5,
                 child: Image.asset(
-                  'assets/bg2.jpg', // Replace with your actual image
+                  'assets/bg2.png', // Replace with your actual image
                   fit: BoxFit.fitHeight,
                 ),
               ),
