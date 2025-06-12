@@ -141,7 +141,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (message.contains('login successful')) {
       final prefs = await SharedPreferences.getInstance();
+      //await prefs.setString('userName', response['name'] ?? '');
+
       await prefs.setString('userName', response['name'] ?? '');
+      await prefs.setBool('isLoggedIn', true); // ✅ Add this line
+
 
       Navigator.pushReplacement(
         context,
@@ -220,7 +224,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 30),
                     isLoading
                         ? const CircularProgressIndicator()
-                        : SizedBox(
+                        :
+                    SizedBox(
                       width: 150,
                       height: 45,
                       child:Container(
