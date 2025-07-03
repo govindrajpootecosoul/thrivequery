@@ -15,26 +15,25 @@ import '../addnew_screen/select_department.dart';
 
 
 
-class NewDashScreen extends StatefulWidget {
-  const NewDashScreen({super.key});
+class Brillo_screen extends StatefulWidget {
+  const Brillo_screen({super.key});
 
   @override
-  State<NewDashScreen> createState() => _NewDashScreenState();
+  State<Brillo_screen> createState() => _Brillo_screenState();
 }
 
-class _NewDashScreenState extends State<NewDashScreen> {
+class _Brillo_screenState extends State<Brillo_screen> {
 
 
 
   int selectedIndex = 1; // All Queries selected by default
 
   final List<String> menuItems = [
-    'Dashboard',
-    'All Queries',
+    'Overview',
+    'Brillo Amazon',
+    'Brillo Website',
     'Add Queries',
-    //'Reports',
-    'Admin Pannel',
-    'Profile',
+
   ];
 
   void onMenuTap(int index) {
@@ -49,17 +48,19 @@ class _NewDashScreenState extends State<NewDashScreen> {
         return QueryListScreen();
       case 0:
         return DashboardGraphScreen();
-       // return DashboardScreen();
+    // return DashboardScreen();
       case 2:
         return  RegistrationForm();
-      // case 3:
-      //   return ReportsScreen();
       case 3:
-        return AdminPanel();
-        case 4:
-        return ProfileScreen();
+        return RegistrationForm();
+    // case 3:
+    //   return ReportsScreen();
+    //   case 3:
+    //     return AdminPanel();
+    //   case 4:
+    //     return ProfileScreen();
 
-        //    NewDashScreen(),
+    //    Brillo_screen(),
     //     DashboardScreen(),
     //     QueryListScreen(),
     //     RegistrationForm(),

@@ -15,26 +15,24 @@ import '../addnew_screen/select_department.dart';
 
 
 
-class NewDashScreen extends StatefulWidget {
-  const NewDashScreen({super.key});
+class vectorai_screen extends StatefulWidget {
+  const vectorai_screen({super.key});
 
   @override
-  State<NewDashScreen> createState() => _NewDashScreenState();
+  State<vectorai_screen> createState() => _vectorai_screenState();
 }
 
-class _NewDashScreenState extends State<NewDashScreen> {
+class _vectorai_screenState extends State<vectorai_screen> {
 
 
 
   int selectedIndex = 1; // All Queries selected by default
 
   final List<String> menuItems = [
-    'Dashboard',
-    'All Queries',
+    'Overview',
+    'Vector.AI',
     'Add Queries',
-    //'Reports',
-    'Admin Pannel',
-    'Profile',
+
   ];
 
   void onMenuTap(int index) {
@@ -49,17 +47,19 @@ class _NewDashScreenState extends State<NewDashScreen> {
         return QueryListScreen();
       case 0:
         return DashboardGraphScreen();
-       // return DashboardScreen();
       case 2:
-        return  RegistrationForm();
-      // case 3:
-      //   return ReportsScreen();
-      case 3:
-        return AdminPanel();
-        case 4:
-        return ProfileScreen();
+        return RegistrationForm();
+    // // return DashboardScreen();
+    //   case 2:
+    //     return  RegistrationForm();
+    // // case 3:
+    // //   return ReportsScreen();
+    //   case 3:
+    //     return AdminPanel();
+    //   case 4:
+    //     return ProfileScreen();
 
-        //    NewDashScreen(),
+    //    vectorai_screen(),
     //     DashboardScreen(),
     //     QueryListScreen(),
     //     RegistrationForm(),

@@ -1,6 +1,8 @@
 
 import 'dart:convert';
 
+import 'package:ecosoulquerytracker/api_config.dart';
+import 'package:ecosoulquerytracker/dio_client.dart';
 import 'package:ecosoulquerytracker/screens/query_form_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +43,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   List<Map<String, String>> _users = [];
   String? _selectedUserId;
 
-  final dio = Dio();
+ final dio = Dio();
   final queryService = QueryService();
 
   @override
@@ -67,6 +69,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
     fetchUsers();
   }
 
+
   Future<void> fetchUsers() async {
     try {
       var response = await dio.get('http://localhost:5100/api/users');
@@ -89,7 +92,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
   Future<String?> updateQuery(Map<String, dynamic> data) async {
     try {
       var response = await Dio().put(
-        'http://192.168.50.92:5100/api/update',
+       // 'http://192.168.50.92:5100/api/update',
+        ApiConfig.update_query,
         data: jsonEncode(data),
 
 
@@ -159,13 +163,18 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     final spacing = SizedBox(height: 12);
 
     final platformOptions = ['Website', 'Email', 'Phone', 'WhatsApp'];
-    final statusOptions = ['Open', 'In Progress', 'Closed'];
+    final statusOptions = ['Open', 'In Progress', 'close'];
 
     return Scaffold(
+
       //appBar: AppBar(title: Text('Registration Form')),
+
       body: Center(
         child: Container(
           width: 500,
@@ -191,6 +200,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
           child: Form(
             key: _formKey,
             child: ListView(
+
               children: [
                 DropdownButtonFormField<String>(
                   decoration: _inputDecoration('Platform'),
@@ -271,13 +281,17 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   onTap: () => _selectDate(context, true),
                 ),
                 spacing,
+
+
                 _users.isEmpty
+
                     ? Center(child: CircularProgressIndicator())
                     : DropdownButtonFormField<String>(
                   decoration: _inputDecoration('Assigned To'),
                   items: _users.map((user) {
                     return DropdownMenuItem<String>(
                       value: user['id'],
+
                       child: Text(user['name'] ?? 'No Name'),
                     );
                   }).toList(),
@@ -287,6 +301,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       ? _selectedUserId
                       : null,
                 ),
+
+
                 spacing,
                 DropdownButtonFormField<String>(
                   decoration: _inputDecoration('Status'),
@@ -298,6 +314,16 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   value: statusOptions.contains(status) ? status : null,
                 ),
                 spacing,
+
+                // ElevatedButton(onPressed: () async {
+                //   SharedPreferences prefs = await SharedPreferences.getInstance();
+                //   String? registrationId = prefs.getString('userId');
+                //   String? userType = prefs.getString('userType');
+                //
+                //   print("aaaa registrationId,,,,  ${registrationId}");
+                //   print("aaaa userType,,,,  ${userType}");
+                // }, child:Text("dataeeeeeeeeeee")),
+
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
@@ -306,12 +332,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       String? userType = prefs.getString('userType');
 
 
-
-
-                    print("registrationId,,,,  ${registrationId}");
-                    print("id,,,,  ${widget.existingData?['id']}");
-                    print("userType,,,,  ${userType}");
-                    print("existingData,,,,  ${widget.existingData}");
+                    print("aaaa registrationId,,,,  ${registrationId}");
+                    print("aaaa id,,,,  ${widget.existingData?['id']}");
+                    print("aaaa userType,,,,  ${userType}");
+                    print("aaaa existingData,,,,  ${widget.existingData}");
 
                       Map<String, dynamic> data = {
                        if( widget.existingData == null)
@@ -443,7 +467,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   List<Map<String, String>> _users = [];
   String? _selectedUserId;
 
-  final dio = Dio();
+ final dio = Dio();
   final queryService = QueryService();
 
   @override

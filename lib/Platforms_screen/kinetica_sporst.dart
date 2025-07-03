@@ -15,26 +15,26 @@ import '../addnew_screen/select_department.dart';
 
 
 
-class NewDashScreen extends StatefulWidget {
-  const NewDashScreen({super.key});
+class kinetica_sports extends StatefulWidget {
+  const kinetica_sports({super.key});
 
   @override
-  State<NewDashScreen> createState() => _NewDashScreenState();
+  State<kinetica_sports> createState() => _kinetica_sportsState();
 }
 
-class _NewDashScreenState extends State<NewDashScreen> {
+class _kinetica_sportsState extends State<kinetica_sports> {
 
 
 
   int selectedIndex = 1; // All Queries selected by default
 
   final List<String> menuItems = [
-    'Dashboard',
-    'All Queries',
-    'Add Queries',
-    //'Reports',
-    'Admin Pannel',
-    'Profile',
+    'Overview',
+    'Kinetica UK',
+    'Kinetica Germany',
+    'Kinetica UAE',
+    'Kinetica Website',
+    'Add Query',
   ];
 
   void onMenuTap(int index) {
@@ -49,17 +49,21 @@ class _NewDashScreenState extends State<NewDashScreen> {
         return QueryListScreen();
       case 0:
         return DashboardGraphScreen();
-       // return DashboardScreen();
+    // return DashboardScreen();
       case 2:
         return  RegistrationForm();
-      // case 3:
-      //   return ReportsScreen();
+    // case 3:
+    //   return ReportsScreen();
       case 3:
-        return AdminPanel();
-        case 4:
+        return Text("UAE");
+      case 4:
         return ProfileScreen();
+        case 5:
+        return RegistrationForm();
+        case 6:
+        return RegistrationForm();
 
-        //    NewDashScreen(),
+    //    kinetica_sports(),
     //     DashboardScreen(),
     //     QueryListScreen(),
     //     RegistrationForm(),
