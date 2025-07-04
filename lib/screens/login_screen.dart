@@ -176,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
         height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/loginbg.png'), // Your background image
+            image: AssetImage('assets/tbg.png'), // Your background image
             fit: BoxFit.cover, // or BoxFit.fitHeight if you prefer
           ),
         ),
@@ -190,23 +190,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [Color(0xFF0f9d58), Color(0xFFa6ce39)],
-                      ).createShader(bounds),
-                      child:Image.asset(
-                        height: 60,
-                        'assets/Logo.png', // Replace with your actual image
-                        fit: BoxFit.contain,
-                      ),
-                    ),
+
                     const SizedBox(height: 12),
                     const Text(
                       'WORKLYTICS:\nOFFICE ORCHESTRA',
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF6B8E23),
+                        color: Color(0xFF073349),
                       ),
                     ),
                     const SizedBox(height: 40),
@@ -240,7 +231,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 45,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [Color(0xFF0f9d58), Color(0xFFa6ce39)],
+
+                            colors: [Color(0xFF073349), Color(0xFF117AAF)],
                           ),
                           borderRadius: BorderRadius.circular(30),
                           boxShadow: const [
@@ -263,6 +255,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const Text(
                             "LOGIN",
                             style: TextStyle(
+                              color:Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

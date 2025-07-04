@@ -233,7 +233,7 @@ class _QueryListScreenState extends State<QueryListScreen> {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/dropdownbg.png'),
+                  image: AssetImage('assets/tblue.png'),
                   fit: BoxFit.fill,
                 ),
                 color: Colors.black,

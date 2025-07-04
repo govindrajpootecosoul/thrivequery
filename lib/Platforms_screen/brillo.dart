@@ -75,7 +75,7 @@ class _Brillo_screenState extends State<Brillo_screen> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/Web.png'),
+            image: AssetImage('assets/tWeb.png'),
             fit: BoxFit.fill,
           ),
         ),

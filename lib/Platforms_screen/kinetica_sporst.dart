@@ -78,7 +78,7 @@ class _kinetica_sportsState extends State<kinetica_sports> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/Web.png'),
+            image: AssetImage('assets/tWeb.png'),
             fit: BoxFit.fill,
           ),
         ),

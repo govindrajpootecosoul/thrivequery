@@ -234,247 +234,269 @@ class _AdminPanelState extends State<AdminPanel> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    appBar: AppBar(),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text("Add New User", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                Text("Existing Users", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return
+      Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: const Text("Admin Panel"),
+        ),
+
+        body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/tbg.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Container(
+
+            child: Column(
               children: [
-                Expanded(
-                  child: Card(
-                    color: Colors.black87,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        children: [
-                          _buildTextField(usernameController, 'Username'),
-                          _buildTextField(emailController, 'Email'),
-                          _buildPasswordField(passwordController, 'Password'),
 
-                          /// ✅ Radio Buttons for Role
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 6),
-                                child: Text("Role", style: TextStyle(color: Colors.white)),
-                              ),
-                              ...roles.map((role) {
-                                return RadioListTile<String>(
-                                  value: role,
-                                  groupValue: selectedRole,
-                                  onChanged: (String? value) {
-                                    setState(() {
-                                      selectedRole = value!;
-                                    });
-                                  },
-                                  title: Text(role, style: const TextStyle(color: Colors.white)),
-                                  activeColor: Colors.green,
-                                  controlAffinity: ListTileControlAffinity.leading,
-                                  tileColor: Colors.black26,
-                                );
-                              }).toList(),
-                            ],
-                          ),
-
-                          /// ✅ Checkboxes for Departments
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 6),
-                                child: Text("Platforms", style: TextStyle(color: Colors.white)),
-                              ),
-                              ...departments.map((dep) {
-                                return CheckboxListTile(
-                                  value: selectedDepartments.contains(dep),
-                                  title: Text(dep, style: const TextStyle(color: Colors.white)),
-                                  activeColor: Colors.green,
-                                  checkColor: Colors.black,
-                                  controlAffinity: ListTileControlAffinity.leading,
-                                  onChanged: (bool? selected) {
-                                    setState(() {
-                                      if (selected == true) {
-                                        selectedDepartments.add(dep);
-                                      } else {
-                                        selectedDepartments.remove(dep);
-                                      }
-                                    });
-                                  },
-                                );
-                              }).toList(),
-                            ],
-                          ),
-
-                          const SizedBox(height: 10),
-                          // ElevatedButton(
-                          //   onPressed: () {
-                          //     createUser();
-                          //     print("username ${usernameController.text}");
-                          //     print("email ${emailController.text}");
-                          //     print("pass ${passwordController.text}");
-                          //     print("role $selectedRole");
-                          //     print("departments $selectedDepartments");
-                          //   },
-                          //   child: const Text("Create User"),
-                          // ) ,
-
-                          // if (upadtee == '1')
-                          //   ElevatedButton(
-                          //     onPressed: () {
-                          //       updateUser(selectedUserForEdit);
-                          //     },
-                          //     child: const Text("Update User"),
-                          //   )
-                          // else
-                          //   ElevatedButton(
-                          //     onPressed: () {
-                          //       createUser();
-                          //     },
-                          //     child: const Text("Create User"),
-                          //   ),
-
-
-
-                         if( upadtee=="1")
-                          ElevatedButton(
-                            onPressed: () {
-                              //createUser();
-                              updateUser(selectedUserForEdit);
-                              upadtee="0";
-                              print("username ${usernameController.text}");
-                              print("email ${emailController.text}");
-                              print("pass ${passwordController.text}");
-                              print("role $selectedRole");
-                              print("departments $selectedDepartments");
-                            },
-                            child: const Text("Update User"),
-                          ),
-
-                          if( upadtee!="1")
-                            ElevatedButton(
-                      onPressed: () {
-                        createUser();
-                        print("username ${usernameController.text}");
-                        print("email ${emailController.text}");
-                        print("pass ${passwordController.text}");
-                        print("role $selectedRole");
-                        print("departments $selectedDepartments");
-                      },
-                      child: const Text("Create User"),
-                    ) ,
-
-              ],
-                      ),
-                    ),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text("Add New User", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text("Existing Users", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  ],
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(height: 10),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Card(
+                        color: Colors.black87,
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                            children: [
+                              _buildTextField(usernameController, 'Username'),
+                              _buildTextField(emailController, 'Email'),
+                              _buildPasswordField(passwordController, 'Password'),
 
-                Expanded(
-                  child: Card(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: DataTable(
-                        columns: [
-                          DataColumn(label: Text('Username')),
-                          DataColumn(label: Text('Role')),
-                          DataColumn(label: Text('Departments')),
-                          if (userTypes == "superadmin") DataColumn(label: Text('Email')),
-                          DataColumn(label: Text('Password')),
-                          DataColumn(label: Text('Edit')),    // ✅ New column
-                          DataColumn(label: Text('Delete')),  // ✅ New column
-                        ],
-                        rows: existingUsers.map((user) {
-                          return DataRow(cells: [
-                            DataCell(Text(user['username'] ?? '')),
-                            DataCell(Text(user['role'] ?? '')),
-                            DataCell(Text(user['departments'] ?? '')),
-                            if (userTypes == "superadmin") DataCell(Text(user['email'] ?? '')),
-                            DataCell(Text(user['password'] ?? '')),
-
-                            /// ✅ Edit Button
-                            DataCell(
-                              IconButton(
-                                icon: Icon(Icons.edit, color: Colors.blue),
-                                onPressed: () {
-                                //  upadtee;
-                                  print("user id>>>>>>>>>>> ${user['id']}");
-
-                                  setState(() {
-                                    upadtee='1';
-                                    usernameController.text = user['username'] ?? '';
-                                    emailController.text = user['email'] ?? '';
-                                    passwordController.text = user['password'] ?? '';
-                                    selectedRole = user['role'] ?? 'User';
-                                    selectedDepartments = (user['departments'] ?? '')
-                                        .split(',')
-                                        .map((e) => e.trim())
-                                        .toList();
-                                  });
-                                },
+                              /// ✅ Radio Buttons for Role
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 6),
+                                    child: Text("Role", style: TextStyle(color: Colors.white)),
+                                  ),
+                                  ...roles.map((role) {
+                                    return RadioListTile<String>(
+                                      value: role,
+                                      groupValue: selectedRole,
+                                      onChanged: (String? value) {
+                                        setState(() {
+                                          selectedRole = value!;
+                                        });
+                                      },
+                                      title: Text(role, style: const TextStyle(color: Colors.white)),
+                                      activeColor: Colors.green,
+                                      controlAffinity: ListTileControlAffinity.leading,
+                                      tileColor: Colors.black26,
+                                    );
+                                  }).toList(),
+                                ],
                               ),
-                            ),
 
-                            /// ✅ Delete Button
-                            DataCell(
-                              IconButton(
-                                icon: Icon(Icons.delete, color: Colors.red),
-                                onPressed: () {
-                                  print("user id>>>>>>>>>>> ${user['id']}");
-                                  deleteUser("${user['id']}");
-                                 // _confirmDelete(user['id']!, user['username']!);
-                                },
+                              /// ✅ Checkboxes for Departments
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 6),
+                                    child: Text("Platforms", style: TextStyle(color: Colors.white)),
+                                  ),
+                                  ...departments.map((dep) {
+                                    return CheckboxListTile(
+                                      value: selectedDepartments.contains(dep),
+                                      title: Text(dep, style: const TextStyle(color: Colors.white)),
+                                      activeColor: Colors.green,
+                                      checkColor: Colors.black,
+                                      controlAffinity: ListTileControlAffinity.leading,
+                                      onChanged: (bool? selected) {
+                                        setState(() {
+                                          if (selected == true) {
+                                            selectedDepartments.add(dep);
+                                          } else {
+                                            selectedDepartments.remove(dep);
+                                          }
+                                        });
+                                      },
+                                    );
+                                  }).toList(),
+                                ],
                               ),
-                            ),
-                          ]);
-                        }).toList(),
+
+                              const SizedBox(height: 10),
+                              // ElevatedButton(
+                              //   onPressed: () {
+                              //     createUser();
+                              //     print("username ${usernameController.text}");
+                              //     print("email ${emailController.text}");
+                              //     print("pass ${passwordController.text}");
+                              //     print("role $selectedRole");
+                              //     print("departments $selectedDepartments");
+                              //   },
+                              //   child: const Text("Create User"),
+                              // ) ,
+
+                              // if (upadtee == '1')
+                              //   ElevatedButton(
+                              //     onPressed: () {
+                              //       updateUser(selectedUserForEdit);
+                              //     },
+                              //     child: const Text("Update User"),
+                              //   )
+                              // else
+                              //   ElevatedButton(
+                              //     onPressed: () {
+                              //       createUser();
+                              //     },
+                              //     child: const Text("Create User"),
+                              //   ),
+
+
+
+                             if( upadtee=="1")
+                              ElevatedButton(
+                                onPressed: () {
+                                  //createUser();
+                                  updateUser(selectedUserForEdit);
+                                  upadtee="0";
+                                  print("username ${usernameController.text}");
+                                  print("email ${emailController.text}");
+                                  print("pass ${passwordController.text}");
+                                  print("role $selectedRole");
+                                  print("departments $selectedDepartments");
+                                },
+                                child: const Text("Update User"),
+                              ),
+
+                              if( upadtee!="1")
+                                ElevatedButton(
+                          onPressed: () {
+                            createUser();
+                            print("username ${usernameController.text}");
+                            print("email ${emailController.text}");
+                            print("pass ${passwordController.text}");
+                            print("role $selectedRole");
+                            print("departments $selectedDepartments");
+                          },
+                          child: const Text("Create User"),
+                        ) ,
+
+                  ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    const SizedBox(width: 16),
+
+                    Expanded(
+                      child: Card(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: DataTable(
+                            columns: [
+                              DataColumn(label: Text('Username')),
+                              DataColumn(label: Text('Role')),
+                              DataColumn(label: Text('Departments')),
+                              if (userTypes == "superadmin") DataColumn(label: Text('Email')),
+                              DataColumn(label: Text('Password')),
+                              DataColumn(label: Text('Edit')),    // ✅ New column
+                              DataColumn(label: Text('Delete')),  // ✅ New column
+                            ],
+                            rows: existingUsers.map((user) {
+                              return DataRow(cells: [
+                                DataCell(Text(user['username'] ?? '')),
+                                DataCell(Text(user['role'] ?? '')),
+                                DataCell(Text(user['departments'] ?? '')),
+                                if (userTypes == "superadmin") DataCell(Text(user['email'] ?? '')),
+                                DataCell(Text(user['password'] ?? '')),
+
+                                /// ✅ Edit Button
+                                DataCell(
+                                  IconButton(
+                                    icon: Icon(Icons.edit, color: Colors.blue),
+                                    onPressed: () {
+                                    //  upadtee;
+                                      print("user id>>>>>>>>>>> ${user['id']}");
+
+                                      setState(() {
+                                        upadtee='1';
+                                        usernameController.text = user['username'] ?? '';
+                                        emailController.text = user['email'] ?? '';
+                                        passwordController.text = user['password'] ?? '';
+                                        selectedRole = user['role'] ?? 'User';
+                                        selectedDepartments = (user['departments'] ?? '')
+                                            .split(',')
+                                            .map((e) => e.trim())
+                                            .toList();
+                                      });
+                                    },
+                                  ),
+                                ),
+
+                                /// ✅ Delete Button
+                                DataCell(
+                                  IconButton(
+                                    icon: Icon(Icons.delete, color: Colors.red),
+                                    onPressed: () {
+                                      print("user id>>>>>>>>>>> ${user['id']}");
+                                      deleteUser("${user['id']}");
+                                     // _confirmDelete(user['id']!, user['username']!);
+                                    },
+                                  ),
+                                ),
+                              ]);
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+                    /*    Expanded(
+                      child: Card(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: DataTable(
+                            columns: [
+                              DataColumn(label: Text('Username')),
+                              DataColumn(label: Text('Role')),
+                              DataColumn(label: Text('Departments')),
+                              if (userTypes == "superadmin") DataColumn(label: Text('Email')),
+                              DataColumn(label: Text('Password')),
+                            ],
+                            rows: existingUsers
+                                .map((user) => DataRow(cells: [
+                              DataCell(Text(user['username'] ?? '')),
+                              DataCell(Text(user['role'] ?? '')),
+                              DataCell(Text(user['departments'] ?? '')),
+                              if (userTypes == "superadmin") DataCell(Text(user['email'] ?? '')),
+                              DataCell(Text(user['password'] ?? '')),
+                            ]))
+                                .toList(),
+                          ),
+                        ),
+                      ),
+                    ),*/
+                  ],
                 ),
 
-
-                /*    Expanded(
-                  child: Card(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: DataTable(
-                        columns: [
-                          DataColumn(label: Text('Username')),
-                          DataColumn(label: Text('Role')),
-                          DataColumn(label: Text('Departments')),
-                          if (userTypes == "superadmin") DataColumn(label: Text('Email')),
-                          DataColumn(label: Text('Password')),
-                        ],
-                        rows: existingUsers
-                            .map((user) => DataRow(cells: [
-                          DataCell(Text(user['username'] ?? '')),
-                          DataCell(Text(user['role'] ?? '')),
-                          DataCell(Text(user['departments'] ?? '')),
-                          if (userTypes == "superadmin") DataCell(Text(user['email'] ?? '')),
-                          DataCell(Text(user['password'] ?? '')),
-                        ]))
-                            .toList(),
-                      ),
-                    ),
-                  ),
-                ),*/
               ],
             ),
-
-          ],
+          ),
         ),
       ),
     );

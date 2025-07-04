@@ -74,7 +74,7 @@ class _vectorai_screenState extends State<vectorai_screen> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/Web.png'),
+            image: AssetImage('assets/tWeb.png'),
             fit: BoxFit.fill,
           ),
         ),
