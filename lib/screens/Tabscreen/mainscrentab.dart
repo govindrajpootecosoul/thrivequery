@@ -60,6 +60,7 @@ class _MainScreenState extends State<MainScreen> {
 
 
 import 'package:ecosoulquerytracker/screens/dash.dart';
+import 'package:ecosoulquerytracker/screens/query_form_new_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:ecosoulquerytracker/screens/Tabscreen/DashboardScreen.dart';
 import 'package:ecosoulquerytracker/screens/Tabscreen/ProfileScreen.dart';
@@ -82,7 +83,8 @@ class _MainScreenState extends State<MainScreen> {
     NewDashScreen(),
     DashboardScreen(),
     QueryListScreen(),
-    RegistrationForm(),
+    // RegistrationForm(),
+    RegistrationFormUpdated()
 
    // ProfileScreen(),
 

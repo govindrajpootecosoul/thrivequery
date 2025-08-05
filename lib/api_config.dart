@@ -1,7 +1,11 @@
 class ApiConfig {
   // Base URL
-  static const String baseUrl = 'http://10.12.253.131:5200/api';
-  //static const String baseUrl = "https://query.thrivebrands.ai/api";
+  // static const String baseUrl = 'http://10.12.253.131:5200/api';
+  //static const String baseUrl = 'http://localhost:5200/api';
+  static const String baseUrl = "https://thriveworklytics.thrivebrands.ai/api";
+  //static const String baseUrl = "http://192.168.50.92:5200/api";
+
+  //https://thriveworklytics.thrivebrands.ai/api
 
 
   // Endpoints
@@ -17,3 +21,6 @@ class ApiConfig {
   static const String update_query = '$baseUrl/update';
 
 }
+
+
+

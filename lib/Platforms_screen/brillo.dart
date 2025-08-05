@@ -5,6 +5,7 @@ import 'package:ecosoulquerytracker/screens/Tabscreen/ProfileScreen.dart';
 import 'package:ecosoulquerytracker/screens/adminpanel.dart';
 import 'package:ecosoulquerytracker/screens/dashbord_graph.dart';
 import 'package:ecosoulquerytracker/screens/login_screen.dart';
+import 'package:ecosoulquerytracker/screens/query_form_new_screen.dart';
 import 'package:ecosoulquerytracker/screens/query_form_screen.dart';
 import 'package:ecosoulquerytracker/screens/query_list_screen.dart';
 import 'package:ecosoulquerytracker/screens/reports/reportsscreen.dart';
@@ -50,9 +51,11 @@ class _Brillo_screenState extends State<Brillo_screen> {
         return DashboardGraphScreen();
     // return DashboardScreen();
       case 2:
-        return  RegistrationForm();
+        // return  RegistrationForm();
+        return  RegistrationFormUpdated();
       case 3:
-        return RegistrationForm();
+        // return RegistrationForm();
+        return  RegistrationFormUpdated();
     // case 3:
     //   return ReportsScreen();
     //   case 3:

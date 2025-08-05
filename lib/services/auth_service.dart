@@ -8,6 +8,9 @@ class AuthService {
 
 
   Future<Map<String, dynamic>?> login(String email, String password) async {
+    print("email ====> $email");
+    print("pass ====> $password");
+    print("ApiConfig.signin =====> ${ApiConfig.signin}");
     final response = await http.post(
       Uri.parse(ApiConfig.signin),
       headers: {'Content-Type': 'application/json'},
@@ -16,7 +19,7 @@ class AuthService {
 
     if (response.statusCode == 200) {
       final res = jsonDecode(response.body);
-
+      print("response.body =====> ${response.body}");
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('userId', res['id']);
       await prefs.setString('userType', res['userType']);

@@ -168,7 +168,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
     final spacing = SizedBox(height: 12);
 
-    final platformOptions = ['Website', 'Email', 'Phone', 'WhatsApp'];
+    final platformOptions = ['Kinetica Sports', 'Brillo', 'Vector.Ai'];
     final statusOptions = ['Open', 'In Progress', 'close'];
 
     return Scaffold(

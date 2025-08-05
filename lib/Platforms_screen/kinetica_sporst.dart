@@ -5,6 +5,8 @@ import 'package:ecosoulquerytracker/screens/Tabscreen/ProfileScreen.dart';
 import 'package:ecosoulquerytracker/screens/adminpanel.dart';
 import 'package:ecosoulquerytracker/screens/dashbord_graph.dart';
 import 'package:ecosoulquerytracker/screens/login_screen.dart';
+import 'package:ecosoulquerytracker/screens/query_data_screen.dart';
+import 'package:ecosoulquerytracker/screens/query_form_new_screen.dart';
 import 'package:ecosoulquerytracker/screens/query_form_screen.dart';
 import 'package:ecosoulquerytracker/screens/query_list_screen.dart';
 import 'package:ecosoulquerytracker/screens/reports/reportsscreen.dart';
@@ -46,20 +48,24 @@ class _kinetica_sportsState extends State<kinetica_sports> {
   Widget getSelectedScreen() {
     switch (selectedIndex) {
       case 1:
-        return QueryListScreen();
+        // return QueryListScreen();
+        return QueryDataScreen(selectedCategory:  menuItems[selectedIndex]);
       case 0:
         return DashboardGraphScreen();
     // return DashboardScreen();
       case 2:
-        return  RegistrationForm();
+        // return  RegistrationForm();
+         return QueryDataScreen(selectedCategory:  menuItems[selectedIndex]);
     // case 3:
     //   return ReportsScreen();
       case 3:
-        return Text("UAE");
+        // return Text("UAE");
+         return QueryDataScreen(selectedCategory:  menuItems[selectedIndex]);
       case 4:
-        return ProfileScreen();
+        // return ProfileScreen();
+         return QueryDataScreen(selectedCategory:  menuItems[selectedIndex]);
         case 5:
-        return RegistrationForm();
+        return RegistrationFormUpdated();
         case 6:
         return RegistrationForm();
 

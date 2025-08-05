@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Platforms_screen/brillo.dart';
+import '../Platforms_screen/hrmp.dart';
 import '../Platforms_screen/kinetica_sporst.dart';
 import '../Platforms_screen/vectorai.dart';
 import '../screens/adminpanel.dart';
@@ -29,7 +30,17 @@ class DepartmentSelectionScreen extends StatelessWidget {
         context,
         MaterialPageRoute(builder: (context) => const vectorai_screen()),
       );
-    } else {
+    }
+
+
+    else if (department == "HRMS") {
+      //platformname=department;
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  MainLayout()),
+      );
+    }
+    else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('No screen found for $department')),
       );
@@ -108,6 +119,49 @@ class DepartmentSelectionScreen extends StatelessWidget {
 
                     // HR Button
                     gradientButton(context, "Vector.Ai"),
+                    const SizedBox(height: 30),
+
+              InkWell(
+                // onTap: () => onDepartmentSelected(label),
+                onTap: () =>{
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  MainLayout()),
+                )
+                },
+
+                borderRadius: BorderRadius.circular(30),
+                child: Container(
+                  width: 250,
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Color(0xFF073349), Color(0xFF117AAF)],
+
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.greenAccent.withOpacity(0.3),
+                        blurRadius: 10,
+                        offset: const Offset(4, 8),
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      "HR Admin",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
                   ],
                 ),
               ),
@@ -120,7 +174,8 @@ class DepartmentSelectionScreen extends StatelessWidget {
 
 
 Widget gradientButton(BuildContext context, String label) {
-    return InkWell(
+    return
+      InkWell(
      // onTap: () => onDepartmentSelected(label),
       onTap: () => onDepartmentSelected(context, label),
 
