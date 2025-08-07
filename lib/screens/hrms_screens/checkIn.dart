@@ -114,7 +114,7 @@ class _CheckInDialogState extends State<CheckInDialog> {
 
       var dio = Dio();
       var response = await dio.request(
-        'http://localhost:5300/api/assetmanagements/checkin',
+        'https://thrive-assetsmanagements.onrender.com/api/assetmanagements/checkin',
         options: Options(method: 'POST', headers: headers),
         data: body,
       );

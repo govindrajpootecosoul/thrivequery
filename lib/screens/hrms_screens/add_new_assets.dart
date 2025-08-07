@@ -631,8 +631,8 @@ class _AddNewAssetScreenState extends State<AddNewAssetScreen> {
 
     try {
       final url = widget.isEdit
-          ? Uri.parse('http://192.168.50.92:5300/api/assetmanagements/${widget.assetData?["_id"]}')
-          : Uri.parse('http://192.168.50.92:5300/api/assetmanagements/upload');
+          ? Uri.parse('https://thrive-assetsmanagements.onrender.com/api/assetmanagements/${widget.assetData?["_id"]}')
+          : Uri.parse('https://thrive-assetsmanagements.onrender.com/api/assetmanagements/upload');
 
       final response = await (widget.isEdit
           ? http.put(url, headers: {'Content-Type': 'application/json'}, body: json.encode(data))

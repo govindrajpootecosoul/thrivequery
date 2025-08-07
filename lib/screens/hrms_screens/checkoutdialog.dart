@@ -34,7 +34,7 @@ class _CheckOutDialogState extends State<CheckOutDialog> {
   Future<void> fetchEmployees() async {
     try {
       var dio = Dio();
-      var response = await dio.get('http://localhost:5300/api/hrms/employees');
+      var response = await dio.get('https://thrive-assetsmanagements.onrender.com/api/hrms/employees');
 
       if (response.statusCode == 200) {
         var data = response.data['data'] as List;
@@ -110,7 +110,7 @@ class _CheckOutDialogState extends State<CheckOutDialog> {
 
       var dio = Dio();
       var response = await dio.request(
-        'http://localhost:5300/api/assetmanagements/assign',
+        'https://thrive-assetsmanagements.onrender.com/api/assetmanagements/assign',
         options: Options(method: 'POST', headers: headers),
         data: data,
       );

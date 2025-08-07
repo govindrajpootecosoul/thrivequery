@@ -75,7 +75,7 @@ class _AllAssetsListScreenState extends State<AllAssetsListScreen> {
 
   Future<void> fetchAssets() async {
     final dio = Dio();
-    const String baseUrl = 'http://localhost:5300/api/assetmanagements';
+    const String baseUrl = 'https://thrive-assetsmanagements.onrender.com/api/assetmanagements';
 
     try {
       final response = await dio.get(baseUrl, queryParameters: {
