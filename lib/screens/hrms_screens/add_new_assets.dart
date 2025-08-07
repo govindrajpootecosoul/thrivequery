@@ -458,10 +458,10 @@ class AddNewAssetScreen extends StatefulWidget {
   final Map<String, dynamic>? assetData;
 
   const AddNewAssetScreen({
-    Key? key,
+    super.key,
     this.isEdit = false,
     this.assetData,
-  }) : super(key: key);
+  });
 
   @override
   State<AddNewAssetScreen> createState() => _AddNewAssetScreenState();
@@ -656,8 +656,40 @@ class _AddNewAssetScreenState extends State<AddNewAssetScreen> {
   }
 
 
-
   Widget buildDropdown(String label, String? value, ValueChanged<String?> onChanged, List<String> items) {
+    // ✅ Fix for: value not in items OR value occurs more than once
+    final validValue = (value != null && items.where((element) => element == value).length == 1) ? value : null;
+
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 4 - 32,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(label),
+          const SizedBox(height: 4),
+          DropdownButtonFormField<String>(
+            value: validValue,
+            onChanged: onChanged,
+            decoration: InputDecoration(
+              fillColor: Colors.green.shade50,
+              filled: true,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+            ),
+            items: items.map((String item) {
+              return DropdownMenuItem<String>(
+                value: item,
+                child: Text(item),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
+/*  Widget buildDropdown(String label, String? value, ValueChanged<String?> onChanged, List<String> items) {
     return SizedBox(
       width: MediaQuery.of(context).size.width / 4 - 32,
       child: Column(
@@ -679,6 +711,9 @@ class _AddNewAssetScreenState extends State<AddNewAssetScreen> {
       ),
     );
   }
+  */
+
+
   Widget buildTextField(String label, TextEditingController controller) {
     return SizedBox(
       width: MediaQuery.of(context).size.width / 4 - 32,

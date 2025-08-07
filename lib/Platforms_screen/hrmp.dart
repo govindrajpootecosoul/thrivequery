@@ -5,6 +5,8 @@ import '../screens/hrms_screens/add_new_assets.dart';
 import '../screens/hrms_screens/hrms_Dashboard_screen.dart';
 
 class MainLayout extends StatefulWidget {
+  const MainLayout({super.key});
+
   @override
   _MainLayoutState createState() => _MainLayoutState();
 }
@@ -16,6 +18,7 @@ class _MainLayoutState extends State<MainLayout> {
   final List<Widget> screens = [
     HrmsDashboardScreen(),
     AllAssetsListScreen(),
+    //AllAssetsListScreenImproved(),
     AddNewAssetScreen(),
     SalesDashboardChart(),
     // Text("Administration"),

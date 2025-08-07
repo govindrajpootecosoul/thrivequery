@@ -215,7 +215,7 @@ class _AdminPanelState extends State<AdminPanel> {
         );
       }
     } catch (e) {
-      print("print ee ,,,,,, ${e}");
+      print("print ee ,,,,,, $e");
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("🔥 Error deleting user: $e")),
       );
@@ -304,7 +304,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                       controlAffinity: ListTileControlAffinity.leading,
                                       tileColor: Colors.black26,
                                     );
-                                  }).toList(),
+                                  }),
                                 ],
                               ),
 
@@ -333,7 +333,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                         });
                                       },
                                     );
-                                  }).toList(),
+                                  }),
                                 ],
                               ),
 

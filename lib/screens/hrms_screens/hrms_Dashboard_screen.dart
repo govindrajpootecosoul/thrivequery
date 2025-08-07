@@ -221,9 +221,9 @@ Divider(),
 
 
 void _showAddTaskDialog(BuildContext context) {
-  final _dateController = TextEditingController();
-  final _taskController = TextEditingController();
-  String? _selectedStatus;
+  final dateController = TextEditingController();
+  final taskController = TextEditingController();
+  String? selectedStatus;
 
   showDialog(
     context: context,
@@ -238,7 +238,7 @@ void _showAddTaskDialog(BuildContext context) {
                 children: [
                   // Task Date with auto dash
                   TextField(
-                    controller: _dateController,
+                    controller: dateController,
                     keyboardType: TextInputType.number,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly, _DateFormatterWithValidation()],
                     maxLength: 10,
@@ -252,7 +252,7 @@ void _showAddTaskDialog(BuildContext context) {
 
                   // Task
                   TextField(
-                    controller: _taskController,
+                    controller: taskController,
                     minLines: 6,
                     maxLines: 10,
                     decoration: InputDecoration(
@@ -264,14 +264,14 @@ void _showAddTaskDialog(BuildContext context) {
 
                   // Status
                   DropdownButtonFormField<String>(
-                    value: _selectedStatus,
+                    value: selectedStatus,
                     items: ['Pending', 'In Progress', 'Completed']
                         .map((status) => DropdownMenuItem(
                       value: status,
                       child: Text(status),
                     ))
                         .toList(),
-                    onChanged: (val) => setState(() => _selectedStatus = val),
+                    onChanged: (val) => setState(() => selectedStatus = val),
                     decoration: InputDecoration(
                       labelText: 'Status',
                       border: OutlineInputBorder(),
@@ -288,9 +288,9 @@ void _showAddTaskDialog(BuildContext context) {
               ElevatedButton(
                 onPressed: () {
                   // You can validate and handle submission here
-                  print('Date: ${_dateController.text}');
-                  print('Task: ${_taskController.text}');
-                  print('Status: $_selectedStatus');
+                  print('Date: ${dateController.text}');
+                  print('Task: ${taskController.text}');
+                  print('Status: $selectedStatus');
 
                   Navigator.pop(context);
                 },

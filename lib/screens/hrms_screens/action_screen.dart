@@ -1,202 +1,210 @@
 import 'package:flutter/material.dart';
+//
+// class CheckInDialog extends StatefulWidget {
+//   const CheckInDialog({super.key});
+//
+//   @override
+//   State<CheckInDialog> createState() => _CheckInDialogState();
+// }
+//
+// class _CheckInDialogState extends State<CheckInDialog> {
+//   bool checkInFromPerson = true;
+//   DateTime selectedDate = DateTime.now();
+//   String? selectedSite;
+//   String? selectedLocation;
+//   String? selectedDepartment;
+//   bool sendEmail = false;
+//   final noteController = TextEditingController();
+//
+//   final email = "charu.anand@ecosoulhome.com"; // You can make this dynamic
+//
+//   Future<void> _selectDate() async {
+//     final picked = await showDatePicker(
+//       context: context,
+//       initialDate: selectedDate,
+//       firstDate: DateTime(2000),
+//       lastDate: DateTime(2100),
+//     );
+//     if (picked != null && picked != selectedDate) {
+//       setState(() {
+//         selectedDate = picked;
+//       });
+//     }
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return AlertDialog(
+//       backgroundColor: const Color(0xFF1A1A2E),
+//       title: const Text("Check in", style: TextStyle(color: Colors.white)),
+//       content: SingleChildScrollView(
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             // Toggle buttons
+//             Row(
+//               children: [
+//                 _radioButton("Person", true),
+//                 const SizedBox(width: 20),
+//                 _radioButton("Site / Location", false),
+//               ],
+//             ),
+//
+//             const SizedBox(height: 16),
+//             // Return date picker
+//             Text("Return Date *", style: TextStyle(color: Colors.white)),
+//             const SizedBox(height: 8),
+//             GestureDetector(
+//               onTap: _selectDate,
+//               child: Container(
+//                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+//                 decoration: BoxDecoration(
+//                   color: const Color(0xFF2E2E42),
+//                   borderRadius: BorderRadius.circular(6),
+//                 ),
+//                 child: Row(
+//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                   children: [
+//                     Text(
+//                       "${selectedDate.day.toString().padLeft(2, '0')}/"
+//                           "${selectedDate.month.toString().padLeft(2, '0')}/"
+//                           "${selectedDate.year}",
+//                       style: const TextStyle(color: Colors.white),
+//                     ),
+//                     const Icon(Icons.calendar_today, color: Colors.white),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//
+//             const SizedBox(height: 20),
+//             const Text(
+//               "Optionally change site, location and department of assets to:",
+//               style: TextStyle(color: Colors.white70),
+//             ),
+//             const SizedBox(height: 12),
+//
+//             _dropdown("Site", ["Site A", "Site B"], selectedSite, (val) {
+//               setState(() => selectedSite = val);
+//             }),
+//             const SizedBox(height: 12),
+//             _dropdown("Location", ["Delhi", "Mumbai"], selectedLocation, (val) {
+//               setState(() => selectedLocation = val);
+//             }),
+//             const SizedBox(height: 12),
+//             _dropdown("Department", ["IT", "HR", "Admin"], selectedDepartment,
+//                     (val) {
+//                   setState(() => selectedDepartment = val);
+//                 }),
+//
+//             const SizedBox(height: 16),
+//             const Text("Check-in Notes", style: TextStyle(color: Colors.white)),
+//             const SizedBox(height: 6),
+//             Container(
+//               decoration: BoxDecoration(
+//                 color: const Color(0xFF2E2E42),
+//                 borderRadius: BorderRadius.circular(6),
+//               ),
+//               padding: const EdgeInsets.all(10),
+//               child: TextField(
+//                 controller: noteController,
+//                 maxLines: 3,
+//                 style: const TextStyle(color: Colors.white),
+//                 decoration: const InputDecoration.collapsed(
+//                   hintText: "Enter notes...",
+//                   hintStyle: TextStyle(color: Colors.white60),
+//                 ),
+//               ),
+//             ),
+//
+//             const SizedBox(height: 12),
+//             Row(
+//               children: [
+//                 Checkbox(
+//                   value: sendEmail,
+//                   onChanged: (val) {
+//                     setState(() => sendEmail = val ?? false);
+//                   },
+//                 ),
+//                 const Text("Send Email", style: TextStyle(color: Colors.white)),
+//               ],
+//             ),
+//             const SizedBox(height: 6),
+//             Container(
+//               width: double.infinity,
+//               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+//               decoration: BoxDecoration(
+//                 color: const Color(0xFF2E2E42),
+//                 borderRadius: BorderRadius.circular(6),
+//               ),
+//               child: Text(
+//                 email,
+//                 style: const TextStyle(color: Colors.white),
+//               ),
+//             )
+//           ],
+//         ),
+//       ),
+//       actions: [
+//         ElevatedButton(
+//           onPressed: () {
+//             // Implement check-in logic
+//             Navigator.pop(context);
+//           },
+//           style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
+//           child: const Text("Check-in"),
+//         ),
+//         TextButton(
+//           onPressed: () => Navigator.pop(context),
+//           child: const Text("Cancel", style: TextStyle(color: Colors.white70)),
+//         ),
+//       ],
+//     );
+//   }
+//
+//   Widget _radioButton(String label, bool value) {
+//     return Row(
+//       children: [
+//         Radio<bool>(
+//           value: value,
+//           groupValue: checkInFromPerson,
+//           activeColor: Colors.amber,
+//           onChanged: (val) => setState(() => checkInFromPerson = val!),
+//         ),
+//         Text(label, style: const TextStyle(color: Colors.white)),
+//       ],
+//     );
+//   }
+//
+//   Widget _dropdown(String label, List<String> items, String? selected,
+//       void Function(String?) onChanged) {
+//     return DropdownButtonFormField<String>(
+//       value: selected,
+//       dropdownColor: const Color(0xFF2E2E42),
+//       decoration: InputDecoration(
+//         labelText: label,
+//         labelStyle: const TextStyle(color: Colors.white),
+//         filled: true,
+//         fillColor: const Color(0xFF2E2E42),
+//         border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+//       ),
+//       style: const TextStyle(color: Colors.white),
+//       items: items
+//           .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+//           .toList(),
+//       onChanged: onChanged,
+//     );
+//   }
+// }
+//
 
-class CheckInDialog extends StatefulWidget {
-  const CheckInDialog({super.key});
 
-  @override
-  State<CheckInDialog> createState() => _CheckInDialogState();
-}
 
-class _CheckInDialogState extends State<CheckInDialog> {
-  bool checkInFromPerson = true;
-  DateTime selectedDate = DateTime.now();
-  String? selectedSite;
-  String? selectedLocation;
-  String? selectedDepartment;
-  bool sendEmail = false;
-  final noteController = TextEditingController();
 
-  final email = "charu.anand@ecosoulhome.com"; // You can make this dynamic
 
-  Future<void> _selectDate() async {
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-    );
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      backgroundColor: const Color(0xFF1A1A2E),
-      title: const Text("Check in", style: TextStyle(color: Colors.white)),
-      content: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Toggle buttons
-            Row(
-              children: [
-                _radioButton("Person", true),
-                const SizedBox(width: 20),
-                _radioButton("Site / Location", false),
-              ],
-            ),
 
-            const SizedBox(height: 16),
-            // Return date picker
-            Text("Return Date *", style: TextStyle(color: Colors.white)),
-            const SizedBox(height: 8),
-            GestureDetector(
-              onTap: _selectDate,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF2E2E42),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "${selectedDate.day.toString().padLeft(2, '0')}/"
-                          "${selectedDate.month.toString().padLeft(2, '0')}/"
-                          "${selectedDate.year}",
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    const Icon(Icons.calendar_today, color: Colors.white),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-            const Text(
-              "Optionally change site, location and department of assets to:",
-              style: TextStyle(color: Colors.white70),
-            ),
-            const SizedBox(height: 12),
-
-            _dropdown("Site", ["Site A", "Site B"], selectedSite, (val) {
-              setState(() => selectedSite = val);
-            }),
-            const SizedBox(height: 12),
-            _dropdown("Location", ["Delhi", "Mumbai"], selectedLocation, (val) {
-              setState(() => selectedLocation = val);
-            }),
-            const SizedBox(height: 12),
-            _dropdown("Department", ["IT", "HR", "Admin"], selectedDepartment,
-                    (val) {
-                  setState(() => selectedDepartment = val);
-                }),
-
-            const SizedBox(height: 16),
-            const Text("Check-in Notes", style: TextStyle(color: Colors.white)),
-            const SizedBox(height: 6),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFF2E2E42),
-                borderRadius: BorderRadius.circular(6),
-              ),
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                controller: noteController,
-                maxLines: 3,
-                style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration.collapsed(
-                  hintText: "Enter notes...",
-                  hintStyle: TextStyle(color: Colors.white60),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Checkbox(
-                  value: sendEmail,
-                  onChanged: (val) {
-                    setState(() => sendEmail = val ?? false);
-                  },
-                ),
-                const Text("Send Email", style: TextStyle(color: Colors.white)),
-              ],
-            ),
-            const SizedBox(height: 6),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-              decoration: BoxDecoration(
-                color: const Color(0xFF2E2E42),
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Text(
-                email,
-                style: const TextStyle(color: Colors.white),
-              ),
-            )
-          ],
-        ),
-      ),
-      actions: [
-        ElevatedButton(
-          onPressed: () {
-            // Implement check-in logic
-            Navigator.pop(context);
-          },
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-          child: const Text("Check-in"),
-        ),
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text("Cancel", style: TextStyle(color: Colors.white70)),
-        ),
-      ],
-    );
-  }
-
-  Widget _radioButton(String label, bool value) {
-    return Row(
-      children: [
-        Radio<bool>(
-          value: value,
-          groupValue: checkInFromPerson,
-          activeColor: Colors.amber,
-          onChanged: (val) => setState(() => checkInFromPerson = val!),
-        ),
-        Text(label, style: const TextStyle(color: Colors.white)),
-      ],
-    );
-  }
-
-  Widget _dropdown(String label, List<String> items, String? selected,
-      void Function(String?) onChanged) {
-    return DropdownButtonFormField<String>(
-      value: selected,
-      dropdownColor: const Color(0xFF2E2E42),
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: const TextStyle(color: Colors.white),
-        filled: true,
-        fillColor: const Color(0xFF2E2E42),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-      ),
-      style: const TextStyle(color: Colors.white),
-      items: items
-          .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-          .toList(),
-      onChanged: onChanged,
-    );
-  }
-}
-
+/*
 class CheckOutDialog extends StatefulWidget {
   const CheckOutDialog({super.key});
 
@@ -391,6 +399,13 @@ class _CheckOutDialogState extends State<CheckOutDialog> {
     );
   }
 }
+
+
+*/
+
+
+
+
 
 class BrokenDialog extends StatefulWidget {
   const BrokenDialog({super.key});

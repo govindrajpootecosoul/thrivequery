@@ -1,13 +1,11 @@
-import 'package:ecosoulquerytracker/screens/Tabscreen/mainscrentab.dart';
-import 'package:ecosoulquerytracker/screens/dash.dart';
-import 'package:ecosoulquerytracker/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'screens/login_screen.dart';
 import 'addnew_screen/select_department.dart';
 
-
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -29,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
         context,
         //MaterialPageRoute(builder: (_) => NewDashScreen()),
-         MaterialPageRoute(builder: (_) => DepartmentSelectionScreen()),
+        MaterialPageRoute(builder: (_) => DepartmentSelectionScreen()),
       );
     } else {
       Navigator.pushReplacement(
@@ -41,8 +39,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: CircularProgressIndicator()),
-    );
+    return Scaffold(body: Center(child: CircularProgressIndicator()));
   }
 }

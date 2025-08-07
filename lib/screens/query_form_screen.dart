@@ -16,7 +16,7 @@ import '../services/queryservice.dart';
 class RegistrationForm extends StatefulWidget {
   final Map<String, dynamic>? existingData;
 
-  RegistrationForm({this.existingData});
+  const RegistrationForm({super.key, this.existingData});
 
   @override
   _RegistrationFormState createState() => _RegistrationFormState();
@@ -99,7 +99,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
         options: Options(headers: {'Content-Type': 'application/json'}),
       );
-      print("print update response ${data}");
+      print("print update response $data");
       if (response.statusCode == 200) {
         return "Query updated successfully";
       } else {
@@ -332,9 +332,9 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       String? userType = prefs.getString('userType');
 
 
-                    print("aaaa registrationId,,,,  ${registrationId}");
+                    print("aaaa registrationId,,,,  $registrationId");
                     print("aaaa id,,,,  ${widget.existingData?['id']}");
-                    print("aaaa userType,,,,  ${userType}");
+                    print("aaaa userType,,,,  $userType");
                     print("aaaa existingData,,,,  ${widget.existingData}");
 
                       Map<String, dynamic> data = {

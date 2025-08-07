@@ -5,7 +5,6 @@ import '../Platforms_screen/hrmp.dart';
 import '../Platforms_screen/kinetica_sporst.dart';
 import '../Platforms_screen/vectorai.dart';
 import '../screens/adminpanel.dart';
-import '../screens/dash.dart';
 
 String platformname="";
 class DepartmentSelectionScreen extends StatelessWidget {

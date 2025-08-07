@@ -130,7 +130,7 @@ class _vectorai_screenState extends State<vectorai_screen> {
                     height: 45,
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [Color(0xFFE8540D), Color(0xFFE8540DFF)],
+                        colors: [Color(0xFFE8540D), Color(0xffe8540dff)],
                       ),
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: const [

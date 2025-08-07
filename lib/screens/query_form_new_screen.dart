@@ -666,7 +666,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class RegistrationFormUpdated extends StatefulWidget {
   final Map<String, dynamic>? existingData;
 
-  const RegistrationFormUpdated({Key? key, this.existingData}) : super(key: key);
+  const RegistrationFormUpdated({super.key, this.existingData});
 
   @override
   _RegistrationFormUpdatedState createState() => _RegistrationFormUpdatedState();
@@ -1026,7 +1026,7 @@ class _RegistrationFormUpdatedState extends State<RegistrationFormUpdated> {
         ...items.map((item) => DropdownMenuItem(
           value: item,
           child: Text(item),
-        )).toList(),
+        )),
       ],
       onChanged: onChanged,
       validator: isRequired ? (value) => value == null ? 'Required field' : null : null,

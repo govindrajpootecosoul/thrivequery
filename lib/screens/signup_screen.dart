@@ -7,6 +7,8 @@ class SignupScreen extends StatelessWidget {
   final TextEditingController password = TextEditingController();
   final authService = AuthService();
 
+  SignupScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

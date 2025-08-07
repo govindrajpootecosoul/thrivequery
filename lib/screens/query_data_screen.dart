@@ -313,8 +313,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 class QueryDataScreen extends StatefulWidget {
   final String selectedCategory;
 
-  const QueryDataScreen({Key? key, required this.selectedCategory})
-      : super(key: key);
+  const QueryDataScreen({super.key, required this.selectedCategory});
 
   @override
   _QueryDataScreenState createState() => _QueryDataScreenState();

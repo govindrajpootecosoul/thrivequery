@@ -259,7 +259,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class DashboardGraphScreen extends StatefulWidget {
-  const DashboardGraphScreen({Key? key}) : super(key: key);
+  const DashboardGraphScreen({super.key});
 
   @override
   State<DashboardGraphScreen> createState() => _DashboardGraphScreenState();

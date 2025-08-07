@@ -12,6 +12,8 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import '../services/queryservice.dart';
 
 class QueryListScreen extends StatefulWidget {
+  const QueryListScreen({super.key});
+
   @override
   _QueryListScreenState createState() => _QueryListScreenState();
 }
@@ -328,7 +330,7 @@ class _QueryListScreenState extends State<QueryListScreen> {
                         ),
                         padding: EdgeInsets.all(16),
                         child: DataTable(
-                          headingRowColor: MaterialStateColor.resolveWith(
+                          headingRowColor: WidgetStateColor.resolveWith(
                                   (states) => Colors.blue.shade100),
                           columnSpacing: 20,
                           columns: [

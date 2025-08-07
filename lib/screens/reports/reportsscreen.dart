@@ -2,7 +2,7 @@ import 'package:ecosoulquerytracker/screens/query_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class ReportsScreen extends StatefulWidget {
-  const ReportsScreen({Key? key}) : super(key: key);
+  const ReportsScreen({super.key});
 
   @override
   State<ReportsScreen> createState() => _ReportsScreenState();
