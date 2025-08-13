@@ -4,6 +4,7 @@ import '../Platforms_screen/brillo.dart';
 import '../Platforms_screen/hrmp.dart';
 import '../Platforms_screen/kinetica_sporst.dart';
 import '../Platforms_screen/vectorai.dart';
+import '../new_assets_managements ui/assetsmain.dart';
 import '../screens/adminpanel.dart';
 
 String platformname="";
@@ -125,7 +126,8 @@ class DepartmentSelectionScreen extends StatelessWidget {
                 onTap: () =>{
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  MainLayout()),
+              //  MaterialPageRoute(builder: (context) =>  MainLayout()),
+                MaterialPageRoute(builder: (context) =>  AssetManagementMain()),
                 )
                 },
 
@@ -150,7 +152,7 @@ class DepartmentSelectionScreen extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "HR Admin",
+                      "Assets Managements",
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

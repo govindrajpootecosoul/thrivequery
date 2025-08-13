@@ -72,7 +72,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
   Future<void> fetchUsers() async {
     try {
-      var response = await dio.get('http://localhost:5100/api/users');
+      //var response = await dio.get('http://localhost:5100/api/users');
+      var response = await dio.get('https://thriveworklytics.thrivebrands.ai/api/users');
       if (response.statusCode == 200) {
         final List<dynamic> userList = response.data['users'];
         setState(() {
