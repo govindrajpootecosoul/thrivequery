@@ -152,7 +152,7 @@ class DepartmentSelectionScreen extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "Assets Managements",
+                      "Assets Management",
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
