@@ -1,7 +1,11 @@
 
 import 'package:ecosoulquerytracker/new_assets_managements%20ui/screens/assets_list.dart';
 import 'package:ecosoulquerytracker/new_assets_managements%20ui/screens/dash.dart';
+import 'package:ecosoulquerytracker/new_assets_managements%20ui/screens/report.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../screens/login_screen.dart';
 
 
 
@@ -69,8 +73,16 @@ class _AssetManagementMainState extends State<AssetManagementMain> {
                     menuButton(Icons.settings, "Settings", 2),
                     menuButton(Icons.description, "Reports", 3),
                     const VerticalDivider(width: 20, thickness: 1),
-                    menuButton(Icons.arrow_back, "Back to Portal", -1),
-                    menuButton(Icons.logout, "Logout", -2),
+                    menuButton(Icons.arrow_back, "Back to Portal", -1,onPressed: () => Navigator.of(context).pop()),
+                    menuButton(Icons.logout, "Logout", -2,onPressed:() async {
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.clear();
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => LoginScreen()),
+                            (route) => false,
+                      );
+                    }),
                   ],
                 ),
               ],
@@ -89,7 +101,8 @@ class _AssetManagementMainState extends State<AssetManagementMain> {
     );
   }
 
-  Widget menuButton(IconData icon, String label, int index) {
+  Widget menuButton(IconData icon, String label, int index,
+      {Function? onPressed}) {
     bool isActive = index == selectedIndex;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -100,6 +113,9 @@ class _AssetManagementMainState extends State<AssetManagementMain> {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         ),
         onPressed: () {
+          if(onPressed!= null){
+            onPressed();
+          }
           if (index >= 0) {
             changePage(index);
           } else {
@@ -146,7 +162,10 @@ class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("⚙️ Settings Page"));
+    return Center(child:
+   // ReportsDashboard(),
+      Text("⚙️ Settings Page Coming Soon")
+    );
   }
 }
 
@@ -154,6 +173,10 @@ class ReportsPage extends StatelessWidget {
   const ReportsPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("📑 Reports Page"));
+    return  Center(child:
+    ReportsDashboard(),
+    //Text("📑 Reports Page")
+
+    );
   }
 }

@@ -374,18 +374,35 @@ class _AllAssetsListScreenState extends State<AllAssetsListScreen> {
                     });
                   },
                 ),
+                // IconButton(
+                //   icon: const Icon(Icons.edit, color: Colors.blue),
+                //   onPressed: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => AddNewAssetScreen(
+                //           isEdit: true,
+                //           assetData: rowMap,
+                //         ),
+                //       ),
+                //     );
+                //   },
+                // ),
+
                 IconButton(
-                  icon: const Icon(Icons.edit, color: Colors.blue),
+                  icon: const Icon(Icons.delete, color: Colors.red),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AddNewAssetScreen(
-                          isEdit: true,
-                          assetData: rowMap,
-                        ),
-                      ),
-                    );
+                    print(assetId);
+                    print("""object""");
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => AddNewAssetScreen(
+                    //       isEdit: true,
+                    //       assetData: rowMap,
+                    //     ),
+                    //   ),
+                    // );
                   },
                 ),
               ],
